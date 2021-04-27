@@ -13,7 +13,6 @@ import androidx.compose.ui.geometry.Rect
 import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Outline
-import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.text.TextStyle
@@ -41,6 +40,7 @@ class MainActivity : ComponentActivity() {
                         CalculatorSecondRow(Modifier.fillMaxWidth())
                         CalculatorThirdRow(Modifier.fillMaxWidth())
                         CalculatorFourthRow(Modifier.fillMaxWidth())
+                        CalculatorLastRow(Modifier.fillMaxWidth())
                     }
                 }
             }
@@ -87,32 +87,25 @@ fun CalculatorFirstRow(modifier: Modifier) {
     Row(modifier = modifier) {
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f),
+            modifier = Modifier.weight(1f),
             onClick = { /*TODO*/ }) {
             Text(text = "AC")
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f),
-            //.background(Color(0xFF2C2F32)),
+            modifier = Modifier.weight(1f),
             onClick = { /*TODO*/ }) {
             Text(text = "+/-")
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f),
-            //.background(Color(0xFF2C2F32)),
+            modifier = Modifier.weight(1f),
             onClick = { /*TODO*/ }) {
             Text(text = "%")
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f),
-            //.background(Color(0xFF2C2F32)),
+            modifier = Modifier.weight(1f),
             onClick = { /*TODO*/ }) {
             Text(text = "\u00F7")
         }
@@ -124,33 +117,25 @@ fun CalculatorSecondRow(modifier: Modifier) {
     Row(modifier = modifier) {
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f),
-            //.background(Color(0xFF2C2F32)),
+            modifier = Modifier.weight(1f),
             onClick = { /*TODO*/ }) {
             Text(text = "7")
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f),
-            //.background(Color(0xFF2C2F32)),
+            modifier = Modifier.weight(1f),
             onClick = { /*TODO*/ }) {
             Text(text = "8")
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f),
-            //.background(Color(0xFF2C2F32)),
+            modifier = Modifier.weight(1f),
             onClick = { /*TODO*/ }) {
             Text(text = "9")
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f),
-            //.background(Color(0xFF2C2F32)),
+            modifier = Modifier.weight(1f),
             onClick = { /*TODO*/ }) {
             Text(text = "*")
         }
@@ -162,37 +147,25 @@ fun CalculatorThirdRow(modifier: Modifier) {
     Row(modifier = modifier) {
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f),
-                //.clip(RectangleShape)
-                //.background(Color(0xFF2C2F32)),
+            modifier = Modifier.weight(1f),
             onClick = { /*TODO*/ }) {
             Text(text = "4")
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f),
-                //.clip(RectangleShape)
-                //.background(Color(0xFF2C2F32)),
+            modifier = Modifier.weight(1f),
             onClick = { /*TODO*/ }) {
             Text(text = "5")
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f),
-                //.clip(RectangleShape)
-                //.background(Color(0xFF2C2F32)),
+            modifier = Modifier.weight(1f),
             onClick = { /*TODO*/ }) {
             Text(text = "6")
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f),
-                //.clip(RectangleShape)
-                //.background(Color(0xFF2C2F32)),
+            modifier = Modifier.weight(1f),
             onClick = { /*TODO*/ }) {
             Text(text = "-")
         }
@@ -204,39 +177,51 @@ fun CalculatorFourthRow(modifier: Modifier) {
     Row(modifier = modifier) {
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f),
-                //.clip(RectangleShape)
-                //.background(Color(0xFF2C2F32)),
+            modifier = Modifier.weight(1f),
             onClick = { /*TODO*/ }) {
             Text(text = "1")
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f),
-                //.clip(RectangleShape)
-                //.background(Color(0xFF2C2F32)),
+            modifier = Modifier.weight(1f),
             onClick = { /*TODO*/ }) {
             Text(text = "2")
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f),
-                //.clip(RectangleShape)
-                //.background(Color(0xFF2C2F32)),
+            modifier = Modifier.weight(1f),
             onClick = { /*TODO*/ }) {
             Text(text = "3")
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f),
-                //.clip(RectangleShape)
-                //.background(Color(0xFF2C2F32)),
+            modifier = Modifier.weight(1f),
             onClick = { /*TODO*/ }) {
             Text(text = "+")
+        }
+    }
+}
+
+@Composable
+fun CalculatorLastRow(modifier: Modifier) {
+    Row(modifier = modifier) {
+        Button(
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier.weight(2f),
+            onClick = { /*TODO*/ }) {
+            Text(text = "0")
+        }
+        Button(
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier.weight(1f),
+            onClick = { /*TODO*/ }) {
+            Text(text = ".")
+        }
+        Button(
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier.weight(1f),
+            onClick = { /*TODO*/ }) {
+            Text(text = "=")
         }
     }
 }
@@ -262,7 +247,7 @@ class CalculatorBoxShape : Shape {
         layoutDirection: LayoutDirection,
         density: Density
     ): Outline {
-        val rect = Rect(0f, 0f, 0f, 0f)
+        val rect = Rect(0f, 0f, 0f, 0f).apply { }
         return Outline.Rectangle(rect)
     }
 }
@@ -278,6 +263,7 @@ fun DefaultPreview() {
             CalculatorSecondRow(Modifier.fillMaxWidth())
             CalculatorThirdRow(Modifier.fillMaxWidth())
             CalculatorFourthRow(Modifier.fillMaxWidth())
+            CalculatorLastRow(Modifier.fillMaxWidth())
         }
     }
 }
