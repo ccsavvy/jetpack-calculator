@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
 
                         CalculatorTextField(
                             textState = textState,
-                            modifier = Modifier.fillMaxWidth(),
+                            modifier = Modifier.height(100.dp),
                             onValueChange = { textState = it }
                         )
                         Column(modifier = Modifier.fillMaxSize()) {
@@ -123,26 +123,20 @@ fun CalculatorTextField(
     modifier: Modifier,
     onValueChange: (String) -> Unit
 ) {
-    Row(modifier = modifier) {
+    Column(
+        modifier = modifier
+            .background(textField)
+            .wrapContentSize(Alignment.BottomEnd)
+            .fillMaxSize()
+    ) {
         TextField(
             value = textState,
             onValueChange = onValueChange,
-            modifier = modifier
+            modifier = Modifier
                 .weight(1f)
-                .height(100.dp)
-                .background(textField)
                 .wrapContentSize(Alignment.BottomEnd)
-                .fillMaxHeight()
-                .fillMaxWidth(),
+                .fillMaxSize(),
             textStyle = TextStyle(fontSize = 36.sp, textAlign = TextAlign.End, color = textColor),
-            placeholder = {
-                ProvideTextStyle(TextStyle(color = textColor, textAlign = TextAlign.End)) {
-                    Text(
-                        text = "0",
-                        modifier = Modifier.wrapContentSize(Alignment.BottomEnd)
-                    )
-                }
-            },
             maxLines = 2,
             readOnly = true
         )
@@ -741,9 +735,11 @@ fun CalculatorLastRow(
     modifier: Modifier
 ) {
     Row(modifier = modifier.fillMaxSize()) {
-        Column(modifier = Modifier
-            .weight(2f)
-            .wrapContentSize(Alignment.Center)) {
+        Column(
+            modifier = Modifier
+                .weight(2f)
+                .wrapContentSize(Alignment.Center)
+        ) {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -778,9 +774,11 @@ fun CalculatorLastRow(
                 )
             }
         }
-        Column(modifier = Modifier
-            .weight(1f)
-            .wrapContentSize(Alignment.Center)) {
+        Column(
+            modifier = Modifier
+                .weight(1f)
+                .wrapContentSize(Alignment.Center)
+        ) {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -816,9 +814,11 @@ fun CalculatorLastRow(
                 )
             }
         }
-        Column(modifier = Modifier
-            .weight(1f)
-            .wrapContentSize(Alignment.Center)) {
+        Column(
+            modifier = Modifier
+                .weight(1f)
+                .wrapContentSize(Alignment.Center)
+        ) {
             Box(
                 modifier = Modifier
                     .fillMaxSize()
@@ -907,7 +907,7 @@ fun DefaultPreview() {
 
             CalculatorTextField(
                 textState = textState,
-                modifier = Modifier.fillMaxWidth(),
+                modifier = Modifier.height(100.dp),
                 onValueChange = { textState = it }
             )
             Column(modifier = Modifier.fillMaxSize()) {
