@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
                 Surface(color = MaterialTheme.colors.background) {
                     Column {
                         CalculatorTextField()
-                        CalculatorFirstRow(Modifier.weight(1f, true))
+                        CalculatorFirstRow(Modifier.fillMaxWidth())
                         CalculatorSecondRow(Modifier.weight(1f, true))
                         CalculatorThirdRow(Modifier.weight(1f, true))
                         CalculatorFourthRow(Modifier.weight(1f, true))
@@ -81,51 +81,35 @@ fun CalculatorTextField() {
 @ExperimentalFoundationApi
 @Composable
 fun CalculatorFirstRow(modifier: Modifier) {
-    LazyVerticalGrid(cells = GridCells.Fixed(4)) {
-        items(1) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Button(
-                    modifier = Modifier
-                        .clip(RectangleShape)
-                        .fillMaxSize()
-                        .background(Color(0xFF2C2F32)),
-                    onClick = { /*TODO*/ }) {
-                    Text(text = "AC")
-                }
-            }
+    Row(modifier = modifier) {
+        Button(
+            modifier = Modifier
+                .clip(RectangleShape)
+                .weight(1f)
+                .background(Color(0xFF2C2F32)),
+            onClick = { /*TODO*/ }) {
+            Text(text = "AC")
         }
-        items(1) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Button(modifier = Modifier
-                    .clip(RectangleShape)
-                    .fillMaxSize()
-                    .background(Color(0xFF2C2F32)),
-                    onClick = { /*TODO*/ }) {
-                    Text(text = "+/-")
-                }
-            }
+        Button(modifier = Modifier
+            .clip(RectangleShape)
+            .weight(1f)
+            .background(Color(0xFF2C2F32)),
+            onClick = { /*TODO*/ }) {
+            Text(text = "+/-")
         }
-        items(1) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Button(modifier = Modifier
-                    .clip(RectangleShape)
-                    .fillMaxSize()
-                    .background(Color(0xFF2C2F32)),
-                    onClick = { /*TODO*/ }) {
-                    Text(text = "%")
-                }
-            }
+        Button(modifier = Modifier
+            .clip(RectangleShape)
+            .weight(1f)
+            .background(Color(0xFF2C2F32)),
+            onClick = { /*TODO*/ }) {
+            Text(text = "%")
         }
-        items(1) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Button(modifier = Modifier
-                    .clip(RectangleShape)
-                    .fillMaxSize()
-                    .background(Color(0xFF2C2F32)),
-                    onClick = { /*TODO*/ }) {
-                    Text(text = "\u00F7")
-                }
-            }
+        Button(modifier = Modifier
+            .clip(RectangleShape)
+            .weight(1f)
+            .background(Color(0xFF2C2F32)),
+            onClick = { /*TODO*/ }) {
+            Text(text = "\u00F7")
         }
     }
 }
@@ -288,19 +272,12 @@ fun CalculatorFourthRow(modifier: Modifier) {
 @Composable
 fun DefaultPreview() {
     MacCalculatorTheme {
-        Column {
+        Column(modifier = Modifier.fillMaxWidth()) {
             CalculatorTextField()
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .weight(1f, true)
-            )
-            {
-                CalculatorFirstRow(Modifier.weight(1f, true))
-                CalculatorSecondRow(Modifier.weight(1f, true))
-                CalculatorThirdRow(Modifier.weight(1f, true))
-                CalculatorFourthRow(Modifier.weight(1f, true))
-            }
+            CalculatorFirstRow(Modifier.fillMaxWidth())
+            CalculatorSecondRow(Modifier.weight(1f, true))
+            CalculatorThirdRow(Modifier.weight(1f, true))
+            CalculatorFourthRow(Modifier.weight(1f, true))
         }
     }
 }
