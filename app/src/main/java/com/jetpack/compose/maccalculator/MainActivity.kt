@@ -20,6 +20,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.jetpack.compose.maccalculator.ui.MacCalculatorTheme
 import com.jetpack.compose.maccalculator.ui.textColor
 import com.jetpack.compose.maccalculator.ui.textField
@@ -33,7 +34,7 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
                     Column {
-                        CalculatorTextField()
+                        CalculatorTextField(Modifier.fillMaxWidth())
                         CalculatorFirstRow(Modifier.fillMaxWidth())
                         CalculatorSecondRow(Modifier.weight(1f, true))
                         CalculatorThirdRow(Modifier.weight(1f, true))
@@ -52,20 +53,21 @@ fun Greeting(name: String) {
 
 @ExperimentalFoundationApi
 @Composable
-fun CalculatorTextField() {
+fun CalculatorTextField(modifier: Modifier) {
 
     var textState by remember { mutableStateOf(TextFieldValue()) }
-    Row {
+    Row(modifier = modifier) {
         TextField(
             value = textState,
             onValueChange = { textState = it },
-            modifier = Modifier
-                .background(textField)
+            modifier = modifier
+                .weight(1f)
                 .height(100.dp)
-                .weight(1f, false)
-                .fillMaxWidth()
-                .wrapContentSize(Alignment.BottomEnd),
-            textStyle = TextStyle(textAlign = TextAlign.End, color = textColor),
+                .background(textField)
+                .wrapContentSize(Alignment.BottomEnd)
+                .fillMaxHeight()
+                .fillMaxWidth(),
+            textStyle = TextStyle(fontSize = 24.sp, textAlign = TextAlign.End, color = textColor),
             placeholder = {
                 ProvideTextStyle(TextStyle(color = textColor, textAlign = TextAlign.End)) {
                     Text(
@@ -273,7 +275,7 @@ fun CalculatorFourthRow(modifier: Modifier) {
 fun DefaultPreview() {
     MacCalculatorTheme {
         Column(modifier = Modifier.fillMaxWidth()) {
-            CalculatorTextField()
+            CalculatorTextField(Modifier.fillMaxWidth())
             CalculatorFirstRow(Modifier.fillMaxWidth())
             CalculatorSecondRow(Modifier.weight(1f, true))
             CalculatorThirdRow(Modifier.weight(1f, true))
