@@ -41,7 +41,7 @@ class MainActivity : ComponentActivity() {
                         var isNewOp by remember { mutableStateOf(true) }
 
                         var oldTextState: String by remember { mutableStateOf("") }
-                        var textState: String by remember { mutableStateOf("") }
+                        var textState: String by remember { mutableStateOf("0") }
 
                         CalculatorTextField(
                             textState = textState,
@@ -138,7 +138,7 @@ fun CalculatorTextField(
             placeholder = {
                 ProvideTextStyle(TextStyle(color = textColor, textAlign = TextAlign.End)) {
                     Text(
-                        text = "",
+                        text = "0",
                         modifier = Modifier.wrapContentSize(Alignment.BottomEnd)
                     )
                 }
@@ -903,7 +903,7 @@ fun DefaultPreview() {
             var isNewOp by remember { mutableStateOf(true) }
 
             var oldTextState: String by remember { mutableStateOf("") }
-            var textState: String by remember { mutableStateOf("") }
+            var textState: String by remember { mutableStateOf("0") }
 
             CalculatorTextField(
                 textState = textState,
