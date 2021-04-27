@@ -37,8 +37,8 @@ class MainActivity : ComponentActivity() {
                         var op by remember { mutableStateOf("") }
                         var isNewOp by remember { mutableStateOf(true) }
 
-                        var oldTextState: String? by remember { mutableStateOf("") }
-                        var textState: String? by remember { mutableStateOf("") }
+                        var oldTextState: String by remember { mutableStateOf("") }
+                        var textState: String by remember { mutableStateOf("") }
 
                         CalculatorTextField(
                             textState = textState,
@@ -104,13 +104,13 @@ fun Greeting(name: String) {
 
 @Composable
 fun CalculatorTextField(
-    textState: String?,
+    textState: String,
     modifier: Modifier,
-    onValueChange: (String?) -> Unit
+    onValueChange: (String) -> Unit
 ) {
     Row(modifier = modifier) {
         TextField(
-            value = textState ?: "",
+            value = textState,
             onValueChange = onValueChange,
             modifier = modifier
                 .weight(1f)
@@ -136,18 +136,18 @@ fun CalculatorTextField(
 
 @Composable
 fun CalculatorFirstRow(
-    textState: String?,
+    textState: String,
     isNewOp: Boolean,
-    onValueChange: (String?) -> Unit,
+    onValueChange: (String) -> Unit,
     onIsNewOpChange: (Boolean) -> Unit,
     onOpChange: (String) -> Unit,
     onOldValueChange: (String) -> Unit,
     modifier: Modifier
 ) {
-    Row(modifier = modifier) {
+    Row(modifier = modifier.fillMaxSize()) {
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxSize(),
             onClick = {
                 onValueChange.invoke("0")
                 onIsNewOpChange.invoke(true)
@@ -157,10 +157,9 @@ fun CalculatorFirstRow(
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxSize(),
             onClick = {
                 if (isNewOp) {
-                    onValueChange.invoke(null)
                     onValueChange.invoke("")
                 }
                 onIsNewOpChange.invoke(false)
@@ -171,9 +170,9 @@ fun CalculatorFirstRow(
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxSize(),
             onClick = {
-                val number: Int? = textState?.toInt()?.div(100)
+                val number = textState.toInt().div(100)
                 onValueChange.invoke(number.toString())
                 onIsNewOpChange.invoke(true)
             }
@@ -182,10 +181,10 @@ fun CalculatorFirstRow(
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxSize(),
             onClick = {
                 onOpChange.invoke("/")
-                onOldValueChange.invoke(textState ?: "0")
+                onOldValueChange.invoke(textState)
                 onIsNewOpChange.invoke(true)
             }
         ) {
@@ -196,21 +195,20 @@ fun CalculatorFirstRow(
 
 @Composable
 fun CalculatorSecondRow(
-    textState: String?,
+    textState: String,
     isNewOp: Boolean,
-    onValueChange: (String?) -> Unit,
+    onValueChange: (String) -> Unit,
     onIsNewOpChange: (Boolean) -> Unit,
     onOpChange: (String) -> Unit,
     onOldValueChange: (String) -> Unit,
     modifier: Modifier
 ) {
-    Row(modifier = modifier) {
+    Row(modifier = modifier.fillMaxSize()) {
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxSize(),
             onClick = {
                 if (isNewOp) {
-                    onValueChange.invoke(null)
                     onValueChange.invoke("")
                 }
                 onIsNewOpChange.invoke(false)
@@ -221,10 +219,9 @@ fun CalculatorSecondRow(
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxSize(),
             onClick = {
                 if (isNewOp) {
-                    onValueChange.invoke(null)
                     onValueChange.invoke("")
                 }
                 onIsNewOpChange.invoke(false)
@@ -235,10 +232,9 @@ fun CalculatorSecondRow(
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxSize(),
             onClick = {
                 if (isNewOp) {
-                    onValueChange.invoke(null)
                     onValueChange.invoke("")
                 }
                 onIsNewOpChange.invoke(false)
@@ -249,10 +245,10 @@ fun CalculatorSecondRow(
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxSize(),
             onClick = {
                 onOpChange.invoke("*")
-                onOldValueChange.invoke(textState ?: "0")
+                onOldValueChange.invoke(textState)
                 onIsNewOpChange.invoke(true)
             }
         ) {
@@ -263,21 +259,20 @@ fun CalculatorSecondRow(
 
 @Composable
 fun CalculatorThirdRow(
-    textState: String?,
+    textState: String,
     isNewOp: Boolean,
-    onValueChange: (String?) -> Unit,
+    onValueChange: (String) -> Unit,
     onIsNewOpChange: (Boolean) -> Unit,
     onOpChange: (String) -> Unit,
     onOldValueChange: (String) -> Unit,
     modifier: Modifier
 ) {
-    Row(modifier = modifier) {
+    Row(modifier = modifier.fillMaxSize()) {
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxSize(),
             onClick = {
                 if (isNewOp) {
-                    onValueChange.invoke(null)
                     onValueChange.invoke("")
                 }
                 onIsNewOpChange.invoke(false)
@@ -288,10 +283,9 @@ fun CalculatorThirdRow(
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxSize(),
             onClick = {
                 if (isNewOp) {
-                    onValueChange.invoke(null)
                     onValueChange.invoke("")
                 }
                 onIsNewOpChange.invoke(false)
@@ -302,10 +296,9 @@ fun CalculatorThirdRow(
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxSize(),
             onClick = {
                 if (isNewOp) {
-                    onValueChange.invoke(null)
                     onValueChange.invoke("")
                 }
                 onIsNewOpChange.invoke(false)
@@ -316,10 +309,10 @@ fun CalculatorThirdRow(
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxSize(),
             onClick = {
                 onOpChange.invoke("-")
-                onOldValueChange.invoke(textState ?: "0")
+                onOldValueChange.invoke(textState)
                 onIsNewOpChange.invoke(true)
             }
         ) {
@@ -330,21 +323,20 @@ fun CalculatorThirdRow(
 
 @Composable
 fun CalculatorFourthRow(
-    textState: String?,
+    textState: String,
     isNewOp: Boolean,
-    onValueChange: (String?) -> Unit,
+    onValueChange: (String) -> Unit,
     onIsNewOpChange: (Boolean) -> Unit,
     onOpChange: (String) -> Unit,
     onOldValueChange: (String) -> Unit,
     modifier: Modifier
 ) {
-    Row(modifier = modifier) {
+    Row(modifier = modifier.fillMaxSize()) {
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxSize(),
             onClick = {
                 if (isNewOp) {
-                    onValueChange.invoke(null)
                     onValueChange.invoke("")
                 }
                 onIsNewOpChange.invoke(false)
@@ -355,10 +347,9 @@ fun CalculatorFourthRow(
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxSize(),
             onClick = {
                 if (isNewOp) {
-                    onValueChange.invoke(null)
                     onValueChange.invoke("")
                 }
                 onIsNewOpChange.invoke(false)
@@ -369,10 +360,9 @@ fun CalculatorFourthRow(
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxSize(),
             onClick = {
                 if (isNewOp) {
-                    onValueChange.invoke(null)
                     onValueChange.invoke("")
                 }
                 onIsNewOpChange.invoke(false)
@@ -383,10 +373,10 @@ fun CalculatorFourthRow(
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxSize(),
             onClick = {
                 onOpChange.invoke("+")
-                onOldValueChange.invoke(textState ?: "0")
+                onOldValueChange.invoke(textState)
                 onIsNewOpChange.invoke(true)
             }
         ) {
@@ -398,20 +388,19 @@ fun CalculatorFourthRow(
 @Composable
 fun CalculatorLastRow(
     op: String,
-    oldNumber: String?,
-    textState: String?,
+    oldNumber: String,
+    textState: String,
     isNewOp: Boolean,
-    onValueChange: (String?) -> Unit,
+    onValueChange: (String) -> Unit,
     onIsNewOpChange: (Boolean) -> Unit,
     modifier: Modifier
 ) {
-    Row(modifier = modifier) {
+    Row(modifier = modifier.fillMaxSize()) {
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier.weight(2f),
+            modifier = Modifier.weight(2f).fillMaxSize(),
             onClick = {
                 if (isNewOp) {
-                    onValueChange.invoke(null)
                     onValueChange.invoke("")
                 }
                 onIsNewOpChange.invoke(false)
@@ -422,14 +411,13 @@ fun CalculatorLastRow(
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxSize(),
             onClick = {
                 if (isNewOp) {
-                    onValueChange.invoke(null)
                     onValueChange.invoke("")
                 }
                 onIsNewOpChange.invoke(false)
-                if (!textState?.contains(".")!!)
+                if (!textState.contains("."))
                     onValueChange.invoke(".")
             }
         ) {
@@ -437,23 +425,23 @@ fun CalculatorLastRow(
         }
         Button(
             shape = MaterialTheme.shapes.large,
-            modifier = Modifier.weight(1f),
+            modifier = Modifier.weight(1f).fillMaxSize(),
             onClick = {
-                if (oldNumber?.isNotEmpty() == true) {
+                if (oldNumber.isNotEmpty()) {
                     var finalNumber: Int? = null
                     when (op) {
 
                         "*" -> {
-                            finalNumber = oldNumber.toInt() * textState!!.toInt()
+                            finalNumber = oldNumber.toInt() * textState.toInt()
                         }
                         "/" -> {
-                            finalNumber = oldNumber.toInt() / textState!!.toInt()
+                            finalNumber = oldNumber.toInt() / textState.toInt()
                         }
                         "+" -> {
-                            finalNumber = oldNumber.toInt() + textState!!.toInt()
+                            finalNumber = oldNumber.toInt() + textState.toInt()
                         }
                         "-" -> {
-                            finalNumber = oldNumber.toInt() - textState!!.toInt()
+                            finalNumber = oldNumber.toInt() - textState.toInt()
                         }
                     }
                     onValueChange.invoke(finalNumber.toString())
@@ -501,59 +489,71 @@ fun DefaultPreview() {
             var op by remember { mutableStateOf("") }
             var isNewOp by remember { mutableStateOf(true) }
 
-            var oldTextState: String? by remember { mutableStateOf("") }
-            var textState: String? by remember { mutableStateOf("") }
+            var oldTextState: String by remember { mutableStateOf("") }
+            var textState: String by remember { mutableStateOf("") }
 
             CalculatorTextField(
                 textState = textState,
                 modifier = Modifier.fillMaxWidth(),
                 onValueChange = { textState = it }
             )
-            CalculatorFirstRow(
-                isNewOp = isNewOp,
-                textState = textState,
-                onValueChange = { textState = it },
-                onIsNewOpChange = { isNewOp = it },
-                onOpChange = { op = it },
-                onOldValueChange = { oldTextState = it },
-                modifier = Modifier.fillMaxWidth()
-            )
-            CalculatorSecondRow(
-                isNewOp = isNewOp,
-                textState = textState,
-                onValueChange = { textState = it },
-                onIsNewOpChange = { isNewOp = it },
-                onOpChange = { op = it },
-                onOldValueChange = { oldTextState = it },
-                modifier = Modifier.fillMaxWidth()
-            )
-            CalculatorThirdRow(
-                isNewOp = isNewOp,
-                textState = textState,
-                onValueChange = { textState = it },
-                onIsNewOpChange = { isNewOp = it },
-                onOpChange = { op = it },
-                onOldValueChange = { oldTextState = it },
-                modifier = Modifier.fillMaxWidth()
-            )
-            CalculatorFourthRow(
-                isNewOp = isNewOp,
-                textState = textState,
-                onValueChange = { textState = it },
-                onIsNewOpChange = { isNewOp = it },
-                onOpChange = { op = it },
-                onOldValueChange = { oldTextState = it },
-                modifier = Modifier.fillMaxWidth()
-            )
-            CalculatorLastRow(
-                op = op,
-                oldNumber = oldTextState,
-                isNewOp = isNewOp,
-                textState = textState,
-                onValueChange = { textState = it },
-                onIsNewOpChange = { isNewOp = it },
-                modifier = Modifier.fillMaxWidth()
-            )
+            Column(modifier = Modifier.fillMaxSize()) {
+                CalculatorFirstRow(
+                    isNewOp = isNewOp,
+                    textState = textState,
+                    onValueChange = { textState = it },
+                    onIsNewOpChange = { isNewOp = it },
+                    onOpChange = { op = it },
+                    onOldValueChange = { oldTextState = it },
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                )
+                CalculatorSecondRow(
+                    isNewOp = isNewOp,
+                    textState = textState,
+                    onValueChange = { textState = it },
+                    onIsNewOpChange = { isNewOp = it },
+                    onOpChange = { op = it },
+                    onOldValueChange = { oldTextState = it },
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                )
+                CalculatorThirdRow(
+                    isNewOp = isNewOp,
+                    textState = textState,
+                    onValueChange = { textState = it },
+                    onIsNewOpChange = { isNewOp = it },
+                    onOpChange = { op = it },
+                    onOldValueChange = { oldTextState = it },
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                )
+                CalculatorFourthRow(
+                    isNewOp = isNewOp,
+                    textState = textState,
+                    onValueChange = { textState = it },
+                    onIsNewOpChange = { isNewOp = it },
+                    onOpChange = { op = it },
+                    onOldValueChange = { oldTextState = it },
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                )
+                CalculatorLastRow(
+                    op = op,
+                    oldNumber = oldTextState,
+                    isNewOp = isNewOp,
+                    textState = textState,
+                    onValueChange = { textState = it },
+                    onIsNewOpChange = { isNewOp = it },
+                    modifier = Modifier
+                        .weight(1f)
+                        .fillMaxWidth()
+                )
+            }
         }
     }
 }
