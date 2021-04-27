@@ -741,74 +741,128 @@ fun CalculatorLastRow(
     modifier: Modifier
 ) {
     Row(modifier = modifier.fillMaxSize()) {
-        Button(
-            shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(2f)
-                .fillMaxSize(),
-            onClick = {
-                var zero = textState
-                if (isNewOp) {
-                    zero = ""
-                    onValueChange.invoke(zero)
-                }
-                onIsNewOpChange.invoke(false)
+        Column(modifier = Modifier
+            .weight(2f)
+            .wrapContentSize(Alignment.Center)) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color(0xFF606264))
+                    .border(width = .5.dp, Color(0xFF2C2F32))
+                    .clickable(
+                        enabled = true,
+                        onClick = {
+                            var zero = textState
+                            if (isNewOp) {
+                                zero = ""
+                                onValueChange.invoke(zero)
+                            }
+                            onIsNewOpChange.invoke(false)
 
-                zero += "0"
-                onValueChange.invoke(zero)
+                            zero += "0"
+                            onValueChange.invoke(zero)
+                        }
+                    )
+            ) {
+                Text(
+                    text = "0",
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.End,
+                        color = textColor,
+                        fontWeight = FontWeight.Bold
+                    ),
+                    modifier = Modifier
+                        .matchParentSize()
+                        .wrapContentSize(Alignment.Center)
+                )
             }
-        ) {
-            Text(text = "0")
         }
-        Button(
-            shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxSize(),
-            onClick = {
-                var dot = textState
-                if (isNewOp) {
-                    dot = ""
-                    onValueChange.invoke(dot)
-                }
-                onIsNewOpChange.invoke(false)
-                if (!dot.contains(".")) {
-                    dot += "."
-                    onValueChange.invoke(dot)
-                }
+        Column(modifier = Modifier
+            .weight(1f)
+            .wrapContentSize(Alignment.Center)) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color(0xFF606264))
+                    .border(width = .5.dp, Color(0xFF2C2F32))
+                    .clickable(
+                        enabled = true,
+                        onClick = {
+                            var dot = textState
+                            if (isNewOp) {
+                                dot = ""
+                                onValueChange.invoke(dot)
+                            }
+                            onIsNewOpChange.invoke(false)
+                            if (!dot.contains(".")) {
+                                dot += "."
+                                onValueChange.invoke(dot)
+                            }
+                        }
+                    )
+            ) {
+                Text(
+                    text = ".",
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.End,
+                        color = textColor,
+                        fontWeight = FontWeight.Bold
+                    ),
+                    modifier = Modifier
+                        .matchParentSize()
+                        .wrapContentSize(Alignment.Center)
+                )
             }
-        ) {
-            Text(text = ".")
         }
-        Button(
-            shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxSize(),
-            onClick = {
-                if (oldNumber.isNotEmpty()) {
-                    var finalNumber: Double = 0.0
-                    when (op) {
+        Column(modifier = Modifier
+            .weight(1f)
+            .wrapContentSize(Alignment.Center)) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .background(Color(0xFFFD9E2B))
+                    .border(width = .5.dp, Color(0xFF2C2F32))
+                    .clickable(
+                        enabled = true,
+                        onClick = {
+                            if (oldNumber.isNotEmpty()) {
+                                var finalNumber = 0.0
+                                when (op) {
 
-                        "*" -> {
-                            finalNumber = oldNumber.toDouble() * textState.toDouble()
+                                    "*" -> {
+                                        finalNumber = oldNumber.toDouble() * textState.toDouble()
+                                    }
+                                    "/" -> {
+                                        finalNumber = oldNumber.toDouble() / textState.toDouble()
+                                    }
+                                    "+" -> {
+                                        finalNumber = oldNumber.toDouble() + textState.toDouble()
+                                    }
+                                    "-" -> {
+                                        finalNumber = oldNumber.toDouble() - textState.toDouble()
+                                    }
+                                }
+                                onValueChange.invoke(finalNumber.toString())
+                                onIsNewOpChange.invoke(true)
+                            }
                         }
-                        "/" -> {
-                            finalNumber = oldNumber.toDouble() / textState.toDouble()
-                        }
-                        "+" -> {
-                            finalNumber = oldNumber.toDouble() + textState.toDouble()
-                        }
-                        "-" -> {
-                            finalNumber = oldNumber.toDouble() - textState.toDouble()
-                        }
-                    }
-                    onValueChange.invoke(finalNumber.toString())
-                    onIsNewOpChange.invoke(true)
-                }
+                    )
+            ) {
+                Text(
+                    text = "=",
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.End,
+                        color = textColor,
+                        fontWeight = FontWeight.Bold
+                    ),
+                    modifier = Modifier
+                        .matchParentSize()
+                        .wrapContentSize(Alignment.Center)
+                )
             }
-        ) {
-            Text(text = "=")
         }
     }
 }
