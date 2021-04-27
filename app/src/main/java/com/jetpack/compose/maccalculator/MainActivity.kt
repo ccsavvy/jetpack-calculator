@@ -297,75 +297,139 @@ fun CalculatorSecondRow(
     modifier: Modifier
 ) {
     Row(modifier = modifier.fillMaxSize()) {
-        Button(
-            shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxSize(),
-            onClick = {
-                var seven = textState
-                if (isNewOp) {
-                    seven = ""
-                    onValueChange.invoke(seven)
-                }
-                onIsNewOpChange.invoke(false)
+        Column(modifier = modifier.wrapContentSize(Alignment.Center)) {
+            Box(
+                modifier = modifier
+                    .weight(1f)
+                    .background(Color(0xFF606264))
+                    .border(width = .5.dp, Color(0xFF2C2F32))
+                    .clickable(
+                        enabled = true,
+                        onClick = {
+                            var seven = textState
+                            if (isNewOp) {
+                                seven = ""
+                                onValueChange.invoke(seven)
+                            }
+                            onIsNewOpChange.invoke(false)
 
-                seven += "7"
-                onValueChange.invoke(seven)
+                            seven += "7"
+                            onValueChange.invoke(seven)
+                        }
+                    )
+            ) {
+                Text(
+                    text = "7",
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.End,
+                        color = textColor,
+                        fontWeight = FontWeight.Bold
+                    ),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .wrapContentSize(Alignment.Center)
+                )
             }
-        ) {
-            Text(text = "7")
         }
-        Button(
-            shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxSize(),
-            onClick = {
-                var eight = textState
-                if (isNewOp) {
-                    eight = ""
-                    onValueChange.invoke(eight)
-                }
-                onIsNewOpChange.invoke(false)
+        Column(modifier = modifier.wrapContentSize(Alignment.Center)) {
+            Box(
+                modifier = modifier
+                    .weight(1f)
+                    .background(Color(0xFF606264))
+                    .border(width = .5.dp, Color(0xFF2C2F32))
+                    .clickable(
+                        enabled = true,
+                        onClick = {
+                            var eight = textState
+                            if (isNewOp) {
+                                eight = ""
+                                onValueChange.invoke(eight)
+                            }
+                            onIsNewOpChange.invoke(false)
 
-                eight += "8"
-                onValueChange.invoke(eight)
+                            eight += "8"
+                            onValueChange.invoke(eight)
+                        }
+                    )
+            ) {
+                Text(
+                    text = "8",
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.End,
+                        color = textColor,
+                        fontWeight = FontWeight.Bold
+                    ),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .wrapContentSize(Alignment.Center)
+                )
             }
-        ) {
-            Text(text = "8")
         }
-        Button(
-            shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxSize(),
-            onClick = {
-                var nine = textState
-                if (isNewOp) {
-                    nine = ""
-                    onValueChange.invoke(nine)
-                }
-                onIsNewOpChange.invoke(false)
+        Column(modifier = modifier.wrapContentSize(Alignment.Center)) {
+            Box(
+                modifier = modifier
+                    .weight(1f)
+                    .background(Color(0xFF606264))
+                    .border(width = .5.dp, Color(0xFF2C2F32))
+                    .clickable(
+                        enabled = true,
+                        onClick = {
+                            var nine = textState
+                            if (isNewOp) {
+                                nine = ""
+                                onValueChange.invoke(nine)
+                            }
+                            onIsNewOpChange.invoke(false)
 
-                nine += "9"
-                onValueChange.invoke(nine)
+                            nine += "9"
+                            onValueChange.invoke(nine)
+                        }
+                    )
+            ) {
+                Text(
+                    text = "9",
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.End,
+                        color = textColor,
+                        fontWeight = FontWeight.Bold
+                    ),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .wrapContentSize(Alignment.Center)
+                )
             }
-        ) {
-            Text(text = "9")
         }
-        Button(
-            shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxSize(),
-            onClick = {
-                onOpChange.invoke("*")
-                onOldValueChange.invoke(textState)
-                onIsNewOpChange.invoke(true)
+        Column(modifier = modifier.wrapContentSize(Alignment.Center)) {
+            Box(
+                modifier = modifier
+                    .weight(1f)
+                    .background(Color(0xFF606264))
+                    .border(width = .5.dp, Color(0xFF2C2F32))
+                    .clickable(
+                        enabled = true,
+                        onClick = {
+                            onOpChange.invoke("*")
+                            onOldValueChange.invoke(textState)
+                            onIsNewOpChange.invoke(true)
+                        }
+                    )
+            ) {
+                Text(
+                    text = "*",
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.End,
+                        color = textColor,
+                        fontWeight = FontWeight.Bold
+                    ),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .wrapContentSize(Alignment.Center)
+                )
             }
-        ) {
-            Text(text = "*")
         }
     }
 }
