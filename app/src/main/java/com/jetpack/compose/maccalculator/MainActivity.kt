@@ -165,7 +165,7 @@ fun CalculatorFirstRow(
                 modifier = modifier
                     .weight(1f)
                     .background(Color(0xFF404345))
-                    .border(width = 1.dp, Color.White)
+                    .border(width = .5.dp, Color(0xFF2C2F32))
                     .clickable(
                         enabled = true,
                         onClick = {
@@ -193,7 +193,7 @@ fun CalculatorFirstRow(
                 modifier = modifier
                     .weight(1f)
                     .background(Color(0xFF404345))
-                    .border(width = 1.dp, Color.White)
+                    .border(width = .5.dp, Color(0xFF2C2F32))
                     .clickable(
                         enabled = true,
                         onClick = {
@@ -228,7 +228,7 @@ fun CalculatorFirstRow(
                 modifier = modifier
                     .weight(1f)
                     .background(Color(0xFF404345))
-                    .border(width = 1.dp, Color.White)
+                    .border(width = .5.dp, Color(0xFF2C2F32))
                     .clickable(
                         enabled = true,
                         onClick = {
@@ -259,7 +259,7 @@ fun CalculatorFirstRow(
                 modifier = modifier
                     .weight(1f)
                     .background(Color(0xFFFD9E2B))
-                    .border(width = 1.dp, Color.White)
+                    .border(width = .5.dp, Color(0xFF2C2F32))
                     .clickable(
                         enabled = true,
                         onClick = {
