@@ -526,20 +526,20 @@ fun CalculatorLastRow(
                 .fillMaxSize(),
             onClick = {
                 if (oldNumber.isNotEmpty()) {
-                    var finalNumber: Int? = null
+                    var finalNumber: Double = 0.0
                     when (op) {
 
                         "*" -> {
-                            finalNumber = oldNumber.toInt() * textState.toInt()
+                            finalNumber = oldNumber.toDouble() * textState.toDouble()
                         }
                         "/" -> {
-                            finalNumber = oldNumber.toInt() / textState.toInt()
+                            finalNumber = oldNumber.toDouble() / textState.toDouble()
                         }
                         "+" -> {
-                            finalNumber = oldNumber.toInt() + textState.toInt()
+                            finalNumber = oldNumber.toDouble() + textState.toDouble()
                         }
                         "-" -> {
-                            finalNumber = oldNumber.toInt() - textState.toInt()
+                            finalNumber = oldNumber.toDouble() - textState.toDouble()
                         }
                     }
                     onValueChange.invoke(finalNumber.toString())
