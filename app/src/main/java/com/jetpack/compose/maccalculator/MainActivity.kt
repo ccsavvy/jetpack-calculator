@@ -3,6 +3,8 @@ package com.jetpack.compose.maccalculator
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.*
@@ -16,6 +18,7 @@ import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Density
@@ -131,7 +134,7 @@ fun CalculatorTextField(
                 .wrapContentSize(Alignment.BottomEnd)
                 .fillMaxHeight()
                 .fillMaxWidth(),
-            textStyle = TextStyle(fontSize = 24.sp, textAlign = TextAlign.End, color = textColor),
+            textStyle = TextStyle(fontSize = 36.sp, textAlign = TextAlign.End, color = textColor),
             placeholder = {
                 ProvideTextStyle(TextStyle(color = textColor, textAlign = TextAlign.End)) {
                     Text(
@@ -157,62 +160,128 @@ fun CalculatorFirstRow(
     modifier: Modifier
 ) {
     Row(modifier = modifier.fillMaxSize()) {
-        Button(
-            shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxSize(),
-            onClick = {
-                onValueChange.invoke("0")
-                onIsNewOpChange.invoke(true)
+        Column(modifier = modifier.wrapContentSize(Alignment.Center)) {
+            Box(
+                modifier = modifier
+                    .weight(1f)
+                    .background(Color(0xFF404345))
+                    .border(width = 1.dp, Color.White)
+                    .clickable(
+                        enabled = true,
+                        onClick = {
+                            onValueChange.invoke("0")
+                            onIsNewOpChange.invoke(true)
+                        }
+                    )
+            ) {
+                Text(
+                    text = "AC",
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.End,
+                        color = textColor,
+                        fontWeight = FontWeight.Bold
+                    ),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .wrapContentSize(Alignment.Center)
+                )
             }
-        ) {
-            Text(text = "AC")
         }
-        Button(
-            shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxSize(),
-            onClick = {
-                var plusOrMinus = textState
-                if (isNewOp) {
-                    plusOrMinus = ""
-                    onValueChange.invoke(plusOrMinus)
-                }
-                onIsNewOpChange.invoke(false)
+        Column(modifier = modifier.wrapContentSize(Alignment.Center)) {
+            Box(
+                modifier = modifier
+                    .weight(1f)
+                    .background(Color(0xFF404345))
+                    .border(width = 1.dp, Color.White)
+                    .clickable(
+                        enabled = true,
+                        onClick = {
+                            var plusOrMinus = textState
+                            if (isNewOp) {
+                                plusOrMinus = ""
+                                onValueChange.invoke(plusOrMinus)
+                            }
+                            onIsNewOpChange.invoke(false)
 
-                plusOrMinus = "-$textState"
-                onValueChange.invoke(plusOrMinus)
+                            plusOrMinus = "-$plusOrMinus"
+                            onValueChange.invoke(plusOrMinus)
+                        }
+                    )
+            ) {
+                Text(
+                    text = "+/-",
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.End,
+                        color = textColor,
+                        fontWeight = FontWeight.Bold
+                    ),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .wrapContentSize(Alignment.Center)
+                )
             }
-        ) {
-            Text(text = "+/-")
         }
-        Button(
-            shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxSize(),
-            onClick = {
-                val number = textState.toInt().div(100)
-                onValueChange.invoke(number.toString())
-                onIsNewOpChange.invoke(true)
+        Column(modifier = modifier.wrapContentSize(Alignment.Center)) {
+            Box(
+                modifier = modifier
+                    .weight(1f)
+                    .background(Color(0xFF404345))
+                    .border(width = 1.dp, Color.White)
+                    .clickable(
+                        enabled = true,
+                        onClick = {
+                            val number = textState
+                                .toInt()
+                                .div(100)
+                            onValueChange.invoke(number.toString())
+                            onIsNewOpChange.invoke(true)
+                        }
+                    )
+            ) {
+                Text(
+                    text = "%",
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.End,
+                        color = textColor,
+                        fontWeight = FontWeight.Bold
+                    ),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .wrapContentSize(Alignment.Center)
+                )
             }
-        ) {
-            Text(text = "%")
         }
-        Button(
-            shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxSize(),
-            onClick = {
-                onOpChange.invoke("/")
-                onOldValueChange.invoke(textState)
-                onIsNewOpChange.invoke(true)
+        Column(modifier = modifier.wrapContentSize(Alignment.Center)) {
+            Box(
+                modifier = modifier
+                    .weight(1f)
+                    .background(Color(0xFFFD9E2B))
+                    .border(width = 1.dp, Color.White)
+                    .clickable(
+                        enabled = true,
+                        onClick = {
+                            onOpChange.invoke("/")
+                            onOldValueChange.invoke(textState)
+                            onIsNewOpChange.invoke(true)
+                        }
+                    )
+            ) {
+                Text(
+                    text = "\u00F7",
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.End,
+                        color = textColor,
+                        fontWeight = FontWeight.Bold
+                    ),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .wrapContentSize(Alignment.Center)
+                )
             }
-        ) {
-            Text(text = "\u00F7")
         }
     }
 }
