@@ -9,13 +9,19 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.geometry.Rect
+import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.RectangleShape
+import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.Density
+import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.jetpack.compose.maccalculator.ui.MacCalculatorTheme
@@ -80,31 +86,33 @@ fun CalculatorTextField(modifier: Modifier) {
 fun CalculatorFirstRow(modifier: Modifier) {
     Row(modifier = modifier) {
         Button(
+            shape = MaterialTheme.shapes.large,
             modifier = Modifier
-                .clip(RectangleShape)
-                .weight(1f)
-                .background(Color(0xFF2C2F32)),
+                .weight(1f),
             onClick = { /*TODO*/ }) {
             Text(text = "AC")
         }
-        Button(modifier = Modifier
-            .clip(RectangleShape)
-            .weight(1f)
-            .background(Color(0xFF2C2F32)),
+        Button(
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier
+                .weight(1f),
+            //.background(Color(0xFF2C2F32)),
             onClick = { /*TODO*/ }) {
             Text(text = "+/-")
         }
-        Button(modifier = Modifier
-            .clip(RectangleShape)
-            .weight(1f)
-            .background(Color(0xFF2C2F32)),
+        Button(
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier
+                .weight(1f),
+            //.background(Color(0xFF2C2F32)),
             onClick = { /*TODO*/ }) {
             Text(text = "%")
         }
-        Button(modifier = Modifier
-            .clip(RectangleShape)
-            .weight(1f)
-            .background(Color(0xFF2C2F32)),
+        Button(
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier
+                .weight(1f),
+            //.background(Color(0xFF2C2F32)),
             onClick = { /*TODO*/ }) {
             Text(text = "\u00F7")
         }
@@ -114,31 +122,35 @@ fun CalculatorFirstRow(modifier: Modifier) {
 @Composable
 fun CalculatorSecondRow(modifier: Modifier) {
     Row(modifier = modifier) {
-        Button(modifier = Modifier
-            .clip(RectangleShape)
-            .weight(1f)
-            .background(Color(0xFF2C2F32)),
+        Button(
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier
+                .weight(1f),
+            //.background(Color(0xFF2C2F32)),
             onClick = { /*TODO*/ }) {
             Text(text = "7")
         }
-        Button(modifier = Modifier
-            .clip(RectangleShape)
-            .weight(1f)
-            .background(Color(0xFF2C2F32)),
+        Button(
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier
+                .weight(1f),
+            //.background(Color(0xFF2C2F32)),
             onClick = { /*TODO*/ }) {
             Text(text = "8")
         }
-        Button(modifier = Modifier
-            .clip(RectangleShape)
-            .weight(1f)
-            .background(Color(0xFF2C2F32)),
+        Button(
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier
+                .weight(1f),
+            //.background(Color(0xFF2C2F32)),
             onClick = { /*TODO*/ }) {
             Text(text = "9")
         }
-        Button(modifier = Modifier
-            .clip(RectangleShape)
-            .weight(1f)
-            .background(Color(0xFF2C2F32)),
+        Button(
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier
+                .weight(1f),
+            //.background(Color(0xFF2C2F32)),
             onClick = { /*TODO*/ }) {
             Text(text = "*")
         }
@@ -148,31 +160,39 @@ fun CalculatorSecondRow(modifier: Modifier) {
 @Composable
 fun CalculatorThirdRow(modifier: Modifier) {
     Row(modifier = modifier) {
-        Button(modifier = Modifier
-            .clip(RectangleShape)
-            .weight(1f)
-            .background(Color(0xFF2C2F32)),
+        Button(
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier
+                .weight(1f),
+                //.clip(RectangleShape)
+                //.background(Color(0xFF2C2F32)),
             onClick = { /*TODO*/ }) {
             Text(text = "4")
         }
-        Button(modifier = Modifier
-            .clip(RectangleShape)
-            .weight(1f)
-            .background(Color(0xFF2C2F32)),
+        Button(
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier
+                .weight(1f),
+                //.clip(RectangleShape)
+                //.background(Color(0xFF2C2F32)),
             onClick = { /*TODO*/ }) {
             Text(text = "5")
         }
-        Button(modifier = Modifier
-            .clip(RectangleShape)
-            .weight(1f)
-            .background(Color(0xFF2C2F32)),
+        Button(
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier
+                .weight(1f),
+                //.clip(RectangleShape)
+                //.background(Color(0xFF2C2F32)),
             onClick = { /*TODO*/ }) {
             Text(text = "6")
         }
-        Button(modifier = Modifier
-            .clip(RectangleShape)
-            .weight(1f)
-            .background(Color(0xFF2C2F32)),
+        Button(
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier
+                .weight(1f),
+                //.clip(RectangleShape)
+                //.background(Color(0xFF2C2F32)),
             onClick = { /*TODO*/ }) {
             Text(text = "-")
         }
@@ -182,36 +202,71 @@ fun CalculatorThirdRow(modifier: Modifier) {
 @Composable
 fun CalculatorFourthRow(modifier: Modifier) {
     Row(modifier = modifier) {
-        Button(modifier = Modifier
-            .clip(RectangleShape)
-            .weight(1f)
-            .background(Color(0xFF2C2F32)),
+        Button(
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier
+                .weight(1f),
+                //.clip(RectangleShape)
+                //.background(Color(0xFF2C2F32)),
             onClick = { /*TODO*/ }) {
             Text(text = "1")
         }
-        Button(modifier = Modifier
-            .clip(RectangleShape)
-            .weight(1f)
-            .background(Color(0xFF2C2F32)),
+        Button(
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier
+                .weight(1f),
+                //.clip(RectangleShape)
+                //.background(Color(0xFF2C2F32)),
             onClick = { /*TODO*/ }) {
             Text(text = "2")
         }
-        Button(modifier = Modifier
-            .clip(RectangleShape)
-            .weight(1f)
-            .background(Color(0xFF2C2F32)),
+        Button(
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier
+                .weight(1f),
+                //.clip(RectangleShape)
+                //.background(Color(0xFF2C2F32)),
             onClick = { /*TODO*/ }) {
             Text(text = "3")
         }
-        Button(modifier = Modifier
-            .clip(RectangleShape)
-            .weight(1f)
-            .background(Color(0xFF2C2F32)),
+        Button(
+            shape = MaterialTheme.shapes.large,
+            modifier = Modifier
+                .weight(1f),
+                //.clip(RectangleShape)
+                //.background(Color(0xFF2C2F32)),
             onClick = { /*TODO*/ }) {
             Text(text = "+")
         }
     }
 }
+
+@Composable
+fun CalculatorBox(shape: Shape) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .wrapContentSize(Alignment.Center)
+    ) {
+        Box(
+            modifier = Modifier
+                .clip(shape)
+                .background(Color.Red)
+        )
+    }
+}
+
+class CalculatorBoxShape : Shape {
+    override fun createOutline(
+        size: Size,
+        layoutDirection: LayoutDirection,
+        density: Density
+    ): Outline {
+        val rect = Rect(0f, 0f, 0f, 0f)
+        return Outline.Rectangle(rect)
+    }
+}
+
 
 @Preview(showBackground = true)
 @Composable
