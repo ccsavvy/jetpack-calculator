@@ -2,11 +2,8 @@ package com.jetpack.compose.maccalculator
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -26,7 +23,6 @@ import com.jetpack.compose.maccalculator.ui.textColor
 import com.jetpack.compose.maccalculator.ui.textField
 
 class MainActivity : ComponentActivity() {
-    @ExperimentalFoundationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         ComposeView(this).also { setContentView(it) }.setContent {
@@ -36,9 +32,9 @@ class MainActivity : ComponentActivity() {
                     Column {
                         CalculatorTextField(Modifier.fillMaxWidth())
                         CalculatorFirstRow(Modifier.fillMaxWidth())
-                        CalculatorSecondRow(Modifier.weight(1f, true))
-                        CalculatorThirdRow(Modifier.weight(1f, true))
-                        CalculatorFourthRow(Modifier.weight(1f, true))
+                        CalculatorSecondRow(Modifier.fillMaxWidth())
+                        CalculatorThirdRow(Modifier.fillMaxWidth())
+                        CalculatorFourthRow(Modifier.fillMaxWidth())
                     }
                 }
             }
@@ -51,7 +47,6 @@ fun Greeting(name: String) {
     Text(text = "Hello $name!")
 }
 
-@ExperimentalFoundationApi
 @Composable
 fun CalculatorTextField(modifier: Modifier) {
 
@@ -75,12 +70,12 @@ fun CalculatorTextField(modifier: Modifier) {
                         modifier = Modifier.wrapContentSize(Alignment.BottomEnd)
                     )
                 }
-            }
+            },
+            maxLines = 2
         )
     }
 }
 
-@ExperimentalFoundationApi
 @Composable
 fun CalculatorFirstRow(modifier: Modifier) {
     Row(modifier = modifier) {
@@ -116,160 +111,108 @@ fun CalculatorFirstRow(modifier: Modifier) {
     }
 }
 
-@ExperimentalFoundationApi
 @Composable
 fun CalculatorSecondRow(modifier: Modifier) {
-    LazyVerticalGrid(cells = GridCells.Fixed(4)) {
-        items(1) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Button(modifier = Modifier
-                    .clip(RectangleShape)
-                    .fillMaxSize()
-                    .background(Color(0xFF2C2F32)),
-                    onClick = { /*TODO*/ }) {
-                    Text(text = "7")
-                }
-            }
+    Row(modifier = modifier) {
+        Button(modifier = Modifier
+            .clip(RectangleShape)
+            .weight(1f)
+            .background(Color(0xFF2C2F32)),
+            onClick = { /*TODO*/ }) {
+            Text(text = "7")
         }
-        items(1) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Button(modifier = Modifier
-                    .clip(RectangleShape)
-                    .fillMaxSize()
-                    .background(Color(0xFF2C2F32)),
-                    onClick = { /*TODO*/ }) {
-                    Text(text = "8")
-                }
-            }
+        Button(modifier = Modifier
+            .clip(RectangleShape)
+            .weight(1f)
+            .background(Color(0xFF2C2F32)),
+            onClick = { /*TODO*/ }) {
+            Text(text = "8")
         }
-        items(1) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Button(modifier = Modifier
-                    .clip(RectangleShape)
-                    .fillMaxSize()
-                    .background(Color(0xFF2C2F32)),
-                    onClick = { /*TODO*/ }) {
-                    Text(text = "9")
-                }
-            }
+        Button(modifier = Modifier
+            .clip(RectangleShape)
+            .weight(1f)
+            .background(Color(0xFF2C2F32)),
+            onClick = { /*TODO*/ }) {
+            Text(text = "9")
         }
-        items(1) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Button(modifier = Modifier
-                    .clip(RectangleShape)
-                    .fillMaxSize()
-                    .background(Color(0xFF2C2F32)),
-                    onClick = { /*TODO*/ }) {
-                    Text(text = "*")
-                }
-            }
+        Button(modifier = Modifier
+            .clip(RectangleShape)
+            .weight(1f)
+            .background(Color(0xFF2C2F32)),
+            onClick = { /*TODO*/ }) {
+            Text(text = "*")
         }
     }
 }
 
-@ExperimentalFoundationApi
 @Composable
 fun CalculatorThirdRow(modifier: Modifier) {
-    LazyVerticalGrid(cells = GridCells.Fixed(4)) {
-        items(1) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Button(modifier = Modifier
-                    .clip(RectangleShape)
-                    .fillMaxSize()
-                    .background(Color(0xFF2C2F32)),
-                    onClick = { /*TODO*/ }) {
-                    Text(text = "4")
-                }
-            }
+    Row(modifier = modifier) {
+        Button(modifier = Modifier
+            .clip(RectangleShape)
+            .weight(1f)
+            .background(Color(0xFF2C2F32)),
+            onClick = { /*TODO*/ }) {
+            Text(text = "4")
         }
-        items(1) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Button(modifier = Modifier
-                    .clip(RectangleShape)
-                    .fillMaxSize()
-                    .background(Color(0xFF2C2F32)),
-                    onClick = { /*TODO*/ }) {
-                    Text(text = "5")
-                }
-            }
+        Button(modifier = Modifier
+            .clip(RectangleShape)
+            .weight(1f)
+            .background(Color(0xFF2C2F32)),
+            onClick = { /*TODO*/ }) {
+            Text(text = "5")
         }
-        items(1) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Button(modifier = Modifier
-                    .clip(RectangleShape)
-                    .fillMaxSize()
-                    .background(Color(0xFF2C2F32)),
-                    onClick = { /*TODO*/ }) {
-                    Text(text = "6")
-                }
-            }
+        Button(modifier = Modifier
+            .clip(RectangleShape)
+            .weight(1f)
+            .background(Color(0xFF2C2F32)),
+            onClick = { /*TODO*/ }) {
+            Text(text = "6")
         }
-        items(1) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Button(modifier = Modifier
-                    .clip(RectangleShape)
-                    .fillMaxSize()
-                    .background(Color(0xFF2C2F32)),
-                    onClick = { /*TODO*/ }) {
-                    Text(text = "-")
-                }
-            }
+        Button(modifier = Modifier
+            .clip(RectangleShape)
+            .weight(1f)
+            .background(Color(0xFF2C2F32)),
+            onClick = { /*TODO*/ }) {
+            Text(text = "-")
         }
     }
 }
 
-@ExperimentalFoundationApi
 @Composable
 fun CalculatorFourthRow(modifier: Modifier) {
-    LazyVerticalGrid(cells = GridCells.Fixed(4)) {
-        items(1) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Button(modifier = Modifier
-                    .clip(RectangleShape)
-                    .fillMaxSize()
-                    .background(Color(0xFF2C2F32)),
-                    onClick = { /*TODO*/ }) {
-                    Text(text = "1")
-                }
-            }
+    Row(modifier = modifier) {
+        Button(modifier = Modifier
+            .clip(RectangleShape)
+            .weight(1f)
+            .background(Color(0xFF2C2F32)),
+            onClick = { /*TODO*/ }) {
+            Text(text = "1")
         }
-        items(1) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Button(modifier = Modifier
-                    .clip(RectangleShape)
-                    .fillMaxSize()
-                    .background(Color(0xFF2C2F32)),
-                    onClick = { /*TODO*/ }) {
-                    Text(text = "2")
-                }
-            }
+        Button(modifier = Modifier
+            .clip(RectangleShape)
+            .weight(1f)
+            .background(Color(0xFF2C2F32)),
+            onClick = { /*TODO*/ }) {
+            Text(text = "2")
         }
-        items(1) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Button(modifier = Modifier
-                    .clip(RectangleShape)
-                    .fillMaxSize()
-                    .background(Color(0xFF2C2F32)),
-                    onClick = { /*TODO*/ }) {
-                    Text(text = "3")
-                }
-            }
+        Button(modifier = Modifier
+            .clip(RectangleShape)
+            .weight(1f)
+            .background(Color(0xFF2C2F32)),
+            onClick = { /*TODO*/ }) {
+            Text(text = "3")
         }
-        items(1) {
-            Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Button(modifier = Modifier
-                    .clip(RectangleShape)
-                    .fillMaxSize()
-                    .background(Color(0xFF2C2F32)),
-                    onClick = { /*TODO*/ }) {
-                    Text(text = "+")
-                }
-            }
+        Button(modifier = Modifier
+            .clip(RectangleShape)
+            .weight(1f)
+            .background(Color(0xFF2C2F32)),
+            onClick = { /*TODO*/ }) {
+            Text(text = "+")
         }
     }
 }
 
-@ExperimentalFoundationApi
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
@@ -277,9 +220,9 @@ fun DefaultPreview() {
         Column(modifier = Modifier.fillMaxWidth()) {
             CalculatorTextField(Modifier.fillMaxWidth())
             CalculatorFirstRow(Modifier.fillMaxWidth())
-            CalculatorSecondRow(Modifier.weight(1f, true))
-            CalculatorThirdRow(Modifier.weight(1f, true))
-            CalculatorFourthRow(Modifier.weight(1f, true))
+            CalculatorSecondRow(Modifier.fillMaxWidth())
+            CalculatorThirdRow(Modifier.fillMaxWidth())
+            CalculatorFourthRow(Modifier.fillMaxWidth())
         }
     }
 }
