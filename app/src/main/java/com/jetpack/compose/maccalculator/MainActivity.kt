@@ -175,11 +175,15 @@ fun CalculatorFirstRow(
                 .weight(1f)
                 .fillMaxSize(),
             onClick = {
+                var plusOrMinus = textState
                 if (isNewOp) {
-                    onValueChange.invoke("")
+                    plusOrMinus = ""
+                    onValueChange.invoke(plusOrMinus)
                 }
                 onIsNewOpChange.invoke(false)
-                onValueChange.invoke("-$textState")
+
+                plusOrMinus = "-$textState"
+                onValueChange.invoke(plusOrMinus)
             }
         ) {
             Text(text = "+/-")
@@ -230,11 +234,15 @@ fun CalculatorSecondRow(
                 .weight(1f)
                 .fillMaxSize(),
             onClick = {
+                var seven = textState
                 if (isNewOp) {
-                    onValueChange.invoke("")
+                    seven = ""
+                    onValueChange.invoke(seven)
                 }
                 onIsNewOpChange.invoke(false)
-                onValueChange.invoke("7")
+
+                seven += "7"
+                onValueChange.invoke(seven)
             }
         ) {
             Text(text = "7")
@@ -245,11 +253,15 @@ fun CalculatorSecondRow(
                 .weight(1f)
                 .fillMaxSize(),
             onClick = {
+                var eight = textState
                 if (isNewOp) {
-                    onValueChange.invoke("")
+                    eight = ""
+                    onValueChange.invoke(eight)
                 }
                 onIsNewOpChange.invoke(false)
-                onValueChange.invoke("8")
+
+                eight += "8"
+                onValueChange.invoke(eight)
             }
         ) {
             Text(text = "8")
@@ -260,11 +272,15 @@ fun CalculatorSecondRow(
                 .weight(1f)
                 .fillMaxSize(),
             onClick = {
+                var nine = textState
                 if (isNewOp) {
-                    onValueChange.invoke("")
+                    nine = ""
+                    onValueChange.invoke(nine)
                 }
                 onIsNewOpChange.invoke(false)
-                onValueChange.invoke("9")
+
+                nine += "9"
+                onValueChange.invoke(nine)
             }
         ) {
             Text(text = "9")
@@ -302,11 +318,15 @@ fun CalculatorThirdRow(
                 .weight(1f)
                 .fillMaxSize(),
             onClick = {
+                var four = textState
                 if (isNewOp) {
-                    onValueChange.invoke("")
+                    four = ""
+                    onValueChange.invoke(four)
                 }
                 onIsNewOpChange.invoke(false)
-                onValueChange.invoke("4")
+
+                four += "4"
+                onValueChange.invoke(four)
             }
         ) {
             Text(text = "4")
@@ -317,11 +337,15 @@ fun CalculatorThirdRow(
                 .weight(1f)
                 .fillMaxSize(),
             onClick = {
+                var five = textState
                 if (isNewOp) {
-                    onValueChange.invoke("")
+                    five = ""
+                    onValueChange.invoke(five)
                 }
                 onIsNewOpChange.invoke(false)
-                onValueChange.invoke("5")
+
+                five += "5"
+                onValueChange.invoke(five)
             }
         ) {
             Text(text = "5")
@@ -332,11 +356,15 @@ fun CalculatorThirdRow(
                 .weight(1f)
                 .fillMaxSize(),
             onClick = {
+                var six = textState
                 if (isNewOp) {
-                    onValueChange.invoke("")
+                    six = ""
+                    onValueChange.invoke(six)
                 }
                 onIsNewOpChange.invoke(false)
-                onValueChange.invoke("6")
+
+                six += "6"
+                onValueChange.invoke(six)
             }
         ) {
             Text(text = "6")
@@ -374,11 +402,15 @@ fun CalculatorFourthRow(
                 .weight(1f)
                 .fillMaxSize(),
             onClick = {
+                var one = textState
                 if (isNewOp) {
-                    onValueChange.invoke("")
+                    one = ""
+                    onValueChange.invoke(one)
                 }
                 onIsNewOpChange.invoke(false)
-                onValueChange.invoke("1")
+
+                one += "1"
+                onValueChange.invoke(one)
             }
         ) {
             Text(text = "1")
@@ -389,11 +421,15 @@ fun CalculatorFourthRow(
                 .weight(1f)
                 .fillMaxSize(),
             onClick = {
+                var two = textState
                 if (isNewOp) {
-                    onValueChange.invoke("")
+                    two = ""
+                    onValueChange.invoke(two)
                 }
                 onIsNewOpChange.invoke(false)
-                onValueChange.invoke("2")
+
+                two += "2"
+                onValueChange.invoke(two)
             }
         ) {
             Text(text = "2")
@@ -404,11 +440,15 @@ fun CalculatorFourthRow(
                 .weight(1f)
                 .fillMaxSize(),
             onClick = {
+                var three = textState
                 if (isNewOp) {
-                    onValueChange.invoke("")
+                    three = ""
+                    onValueChange.invoke(three)
                 }
                 onIsNewOpChange.invoke(false)
-                onValueChange.invoke("3")
+
+                three += "3"
+                onValueChange.invoke(three)
             }
         ) {
             Text(text = "3")
@@ -446,11 +486,15 @@ fun CalculatorLastRow(
                 .weight(2f)
                 .fillMaxSize(),
             onClick = {
+                var zero = textState
                 if (isNewOp) {
-                    onValueChange.invoke("")
+                    zero = ""
+                    onValueChange.invoke(zero)
                 }
                 onIsNewOpChange.invoke(false)
-                onValueChange.invoke("0")
+
+                zero += "0"
+                onValueChange.invoke(zero)
             }
         ) {
             Text(text = "0")
@@ -461,12 +505,16 @@ fun CalculatorLastRow(
                 .weight(1f)
                 .fillMaxSize(),
             onClick = {
+                var dot = textState
                 if (isNewOp) {
-                    onValueChange.invoke("")
+                    dot = ""
+                    onValueChange.invoke(dot)
                 }
                 onIsNewOpChange.invoke(false)
-                if (!textState.contains("."))
-                    onValueChange.invoke(".")
+                if (!dot.contains(".")) {
+                    dot += "."
+                    onValueChange.invoke(dot)
+                }
             }
         ) {
             Text(text = ".")
