@@ -17,6 +17,7 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Density
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
@@ -492,21 +493,67 @@ class CalculatorBoxShape : Shape {
 }
 
 
-//@Preview(showBackground = true)
-//@Composable
-//fun DefaultPreview() {
-//    MacCalculatorTheme {
-//        Column(modifier = Modifier.fillMaxWidth()) {
-//            CalculatorTextField(
-//                textState = textState,
-//                modifier = Modifier.fillMaxWidth(),
-//                onValueChange = { textState = it }
-//            )
-//            CalculatorFirstRow(Modifier.fillMaxWidth())
-//            CalculatorSecondRow(Modifier.fillMaxWidth())
-//            CalculatorThirdRow(Modifier.fillMaxWidth())
-//            CalculatorFourthRow(Modifier.fillMaxWidth())
-//            CalculatorLastRow(Modifier.fillMaxWidth())
-//        }
-//    }
-//}
+@Preview(showBackground = true)
+@Composable
+fun DefaultPreview() {
+    MacCalculatorTheme {
+        Column {
+            var op by remember { mutableStateOf("") }
+            var isNewOp by remember { mutableStateOf(true) }
+
+            var oldTextState: String? by remember { mutableStateOf("") }
+            var textState: String? by remember { mutableStateOf("") }
+
+            CalculatorTextField(
+                textState = textState,
+                modifier = Modifier.fillMaxWidth(),
+                onValueChange = { textState = it }
+            )
+            CalculatorFirstRow(
+                isNewOp = isNewOp,
+                textState = textState,
+                onValueChange = { textState = it },
+                onIsNewOpChange = { isNewOp = it },
+                onOpChange = { op = it },
+                onOldValueChange = { oldTextState = it },
+                modifier = Modifier.fillMaxWidth()
+            )
+            CalculatorSecondRow(
+                isNewOp = isNewOp,
+                textState = textState,
+                onValueChange = { textState = it },
+                onIsNewOpChange = { isNewOp = it },
+                onOpChange = { op = it },
+                onOldValueChange = { oldTextState = it },
+                modifier = Modifier.fillMaxWidth()
+            )
+            CalculatorThirdRow(
+                isNewOp = isNewOp,
+                textState = textState,
+                onValueChange = { textState = it },
+                onIsNewOpChange = { isNewOp = it },
+                onOpChange = { op = it },
+                onOldValueChange = { oldTextState = it },
+                modifier = Modifier.fillMaxWidth()
+            )
+            CalculatorFourthRow(
+                isNewOp = isNewOp,
+                textState = textState,
+                onValueChange = { textState = it },
+                onIsNewOpChange = { isNewOp = it },
+                onOpChange = { op = it },
+                onOldValueChange = { oldTextState = it },
+                modifier = Modifier.fillMaxWidth()
+            )
+            CalculatorLastRow(
+                op = op,
+                oldNumber = oldTextState,
+                isNewOp = isNewOp,
+                textState = textState,
+                onValueChange = { textState = it },
+                onIsNewOpChange = { isNewOp = it },
+                modifier = Modifier.fillMaxWidth()
+            )
+        }
+    }
+}
