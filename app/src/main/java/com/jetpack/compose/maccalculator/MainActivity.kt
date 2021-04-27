@@ -406,7 +406,7 @@ fun CalculatorSecondRow(
             Box(
                 modifier = modifier
                     .weight(1f)
-                    .background(Color(0xFF606264))
+                    .background(Color(0xFFFD9E2B))
                     .border(width = .5.dp, Color(0xFF2C2F32))
                     .clickable(
                         enabled = true,
@@ -445,75 +445,139 @@ fun CalculatorThirdRow(
     modifier: Modifier
 ) {
     Row(modifier = modifier.fillMaxSize()) {
-        Button(
-            shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxSize(),
-            onClick = {
-                var four = textState
-                if (isNewOp) {
-                    four = ""
-                    onValueChange.invoke(four)
-                }
-                onIsNewOpChange.invoke(false)
+        Column(modifier = modifier.wrapContentSize(Alignment.Center)) {
+            Box(
+                modifier = modifier
+                    .weight(1f)
+                    .background(Color(0xFF606264))
+                    .border(width = .5.dp, Color(0xFF2C2F32))
+                    .clickable(
+                        enabled = true,
+                        onClick = {
+                            var four = textState
+                            if (isNewOp) {
+                                four = ""
+                                onValueChange.invoke(four)
+                            }
+                            onIsNewOpChange.invoke(false)
 
-                four += "4"
-                onValueChange.invoke(four)
+                            four += "4"
+                            onValueChange.invoke(four)
+                        }
+                    )
+            ) {
+                Text(
+                    text = "4",
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.End,
+                        color = textColor,
+                        fontWeight = FontWeight.Bold
+                    ),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .wrapContentSize(Alignment.Center)
+                )
             }
-        ) {
-            Text(text = "4")
         }
-        Button(
-            shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxSize(),
-            onClick = {
-                var five = textState
-                if (isNewOp) {
-                    five = ""
-                    onValueChange.invoke(five)
-                }
-                onIsNewOpChange.invoke(false)
+        Column(modifier = modifier.wrapContentSize(Alignment.Center)) {
+            Box(
+                modifier = modifier
+                    .weight(1f)
+                    .background(Color(0xFF606264))
+                    .border(width = .5.dp, Color(0xFF2C2F32))
+                    .clickable(
+                        enabled = true,
+                        onClick = {
+                            var five = textState
+                            if (isNewOp) {
+                                five = ""
+                                onValueChange.invoke(five)
+                            }
+                            onIsNewOpChange.invoke(false)
 
-                five += "5"
-                onValueChange.invoke(five)
+                            five += "5"
+                            onValueChange.invoke(five)
+                        }
+                    )
+            ) {
+                Text(
+                    text = "5",
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.End,
+                        color = textColor,
+                        fontWeight = FontWeight.Bold
+                    ),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .wrapContentSize(Alignment.Center)
+                )
             }
-        ) {
-            Text(text = "5")
         }
-        Button(
-            shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxSize(),
-            onClick = {
-                var six = textState
-                if (isNewOp) {
-                    six = ""
-                    onValueChange.invoke(six)
-                }
-                onIsNewOpChange.invoke(false)
+        Column(modifier = modifier.wrapContentSize(Alignment.Center)) {
+            Box(
+                modifier = modifier
+                    .weight(1f)
+                    .background(Color(0xFF606264))
+                    .border(width = .5.dp, Color(0xFF2C2F32))
+                    .clickable(
+                        enabled = true,
+                        onClick = {
+                            var six = textState
+                            if (isNewOp) {
+                                six = ""
+                                onValueChange.invoke(six)
+                            }
+                            onIsNewOpChange.invoke(false)
 
-                six += "6"
-                onValueChange.invoke(six)
+                            six += "6"
+                            onValueChange.invoke(six)
+                        }
+                    )
+            ) {
+                Text(
+                    text = "6",
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.End,
+                        color = textColor,
+                        fontWeight = FontWeight.Bold
+                    ),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .wrapContentSize(Alignment.Center)
+                )
             }
-        ) {
-            Text(text = "6")
         }
-        Button(
-            shape = MaterialTheme.shapes.large,
-            modifier = Modifier
-                .weight(1f)
-                .fillMaxSize(),
-            onClick = {
-                onOpChange.invoke("-")
-                onOldValueChange.invoke(textState)
-                onIsNewOpChange.invoke(true)
+        Column(modifier = modifier.wrapContentSize(Alignment.Center)) {
+            Box(
+                modifier = modifier
+                    .weight(1f)
+                    .background(Color(0xFFFD9E2B))
+                    .border(width = .5.dp, Color(0xFF2C2F32))
+                    .clickable(
+                        enabled = true,
+                        onClick = {
+                            onOpChange.invoke("-")
+                            onOldValueChange.invoke(textState)
+                            onIsNewOpChange.invoke(true)
+                        }
+                    )
+            ) {
+                Text(
+                    text = "-",
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.End,
+                        color = textColor,
+                        fontWeight = FontWeight.Bold
+                    ),
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .wrapContentSize(Alignment.Center)
+                )
             }
-        ) {
-            Text(text = "-")
         }
     }
 }
