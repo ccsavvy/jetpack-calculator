@@ -1,11 +1,13 @@
 package com.jetpack.compose.maccalculator
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -17,6 +19,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -867,31 +870,7 @@ fun CalculatorLastRow(
     }
 }
 
-@Composable
-fun CalculatorBox(shape: Shape) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .wrapContentSize(Alignment.Center)
-    ) {
-        Box(
-            modifier = Modifier
-                .clip(shape)
-                .background(Color.Red)
-        )
-    }
-}
 
-class CalculatorBoxShape : Shape {
-    override fun createOutline(
-        size: Size,
-        layoutDirection: LayoutDirection,
-        density: Density
-    ): Outline {
-        val rect = Rect(0f, 0f, 0f, 0f).apply { }
-        return Outline.Rectangle(rect)
-    }
-}
 
 
 @Preview(showBackground = true)
